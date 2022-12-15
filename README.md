@@ -33,7 +33,7 @@ Caso nenhum arquivo seja configurado, a aplicação é iniciada com o banco de d
 
 ### Configurações
 
-As configurações do default projeto estão contidas no arquivo GoldenRaspberryAwards/src/main/resources/application.properties. 
+As configurações default do projeto estão contidas no arquivo GoldenRaspberryAwards/src/main/resources/application.properties. 
 
 A maior parte das configurações é relacionada à infraestrutura da aplicação, contudo, as seguintes propriedades permitem alterar o seu comportamento:
 
