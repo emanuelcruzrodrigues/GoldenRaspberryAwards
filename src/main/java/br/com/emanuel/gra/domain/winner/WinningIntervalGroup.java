@@ -24,11 +24,15 @@ public class WinningIntervalGroup {
 		
 		Map<Integer, List<WinningInterval>> winningPerInterval = intervals.stream().collect(Collectors.groupingBy(i -> i.getInterval()));
 		
-		Integer minimalInterval = winningPerInterval.keySet().stream().min(Comparator.naturalOrder()).get();
-		minimumIntervals.addAll(winningPerInterval.get(minimalInterval));
+		Integer minimalInterval = winningPerInterval.keySet().stream().min(Comparator.naturalOrder()).orElse(-1);
+		if (minimalInterval > 0) {
+			minimumIntervals.addAll(winningPerInterval.get(minimalInterval));
+		}
 		
-		Integer maximumInterval = winningPerInterval.keySet().stream().max(Comparator.naturalOrder()).get();
-		maximumIntervals.addAll(winningPerInterval.get(maximumInterval));
+		Integer maximumInterval = winningPerInterval.keySet().stream().max(Comparator.naturalOrder()).orElse(-1);
+		if (maximumInterval > 0) {
+			maximumIntervals.addAll(winningPerInterval.get(maximumInterval));
+		}
 	}
 
 	public WinningIntervalGroup() {
