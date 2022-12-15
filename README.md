@@ -33,9 +33,9 @@ Caso nenhum arquivo seja configurado, a aplicação é iniciada com o banco de d
 
 ### Configurações
 
-As configurações do default do projeto estão contidas no arquivo GoldenRaspberryAwards/src/main/resources/application.properties. 
+As configurações do default projeto estão contidas no arquivo GoldenRaspberryAwards/src/main/resources/application.properties. 
 
-A maior parte das configurações é relacionada à infraestrutura da aplicação, contudo, as seguintes propriedades permitem alterar o comportamento da aplicação:
+A maior parte das configurações é relacionada à infraestrutura da aplicação, contudo, as seguintes propriedades permitem alterar o seu comportamento:
 
 - movielist.file.location: Localização do arquivo csv que contém os dados iniciais da aplicação. Por padrão é carregado o arquivo "movielist.csv", presente na raiz do projeto. 
 - movielist.file.idx.year: Índice da coluna relativa ao ano.
