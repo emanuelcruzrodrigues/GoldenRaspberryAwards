@@ -11,7 +11,16 @@ As demais dependências são gerenciadas pelo Maven.
 
 ## Como executar o projeto
 
-Para executar o projeto em ambiente de desenvolvimento, basta executar o método main da classe: br.com.emanuel.gra.GoldenRaspberryAwardsApplication
+1) Clone o projeto em seu workspace
+2) Importe o projeto:
+
+No eclipse:
+
+![image](https://user-images.githubusercontent.com/1282312/207864878-70b342df-6423-4e23-903c-487c87459ed9.png)
+
+![image](https://user-images.githubusercontent.com/1282312/207864955-53faae70-8d51-4ab7-a701-6bfa7c6025a8.png)
+
+3) Execute o método main da classe: br.com.emanuel.gra.GoldenRaspberryAwardsApplication
 
 Ao iniciar, os dados contidos no arquivo configurado na propriedade "movielist.file.location" são importados para o banco de dados da aplicação. 
 
@@ -24,9 +33,13 @@ Caso nenhum arquivo seja configurado, a aplicação é iniciada com o banco de d
 
 ### Configurações
 
-As configurações do default do projeto estão contidas no arquivo GoldenRaspberryAwards/src/main/resources/application.properties. 
+As configurações default do projeto estão contidas no arquivo:
 
-A maior parte das configurações é relacionada à infraestrutura da aplicação, contudo, as seguintes propriedades permitem alterar o comportamento da aplicação:
+```
+src/main/resources/application.properties
+```
+
+A maior parte das configurações é relacionada à infraestrutura da aplicação, contudo, as seguintes propriedades permitem alterar o seu comportamento:
 
 - movielist.file.location: Localização do arquivo csv que contém os dados iniciais da aplicação. Por padrão é carregado o arquivo "movielist.csv", presente na raiz do projeto. 
 - movielist.file.idx.year: Índice da coluna relativa ao ano.
