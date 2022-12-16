@@ -33,9 +33,9 @@ public class SearchWinner {
 		
 		List<WinningInterval> result = new ArrayList<>();
 		
-		List<Winner> winners = nomineeRepository.queryProducersWithMoreThanOneWin();
+		List<String> producers = nomineeRepository.queryProducersWithMoreThanOneWin();
 		
-		Map<String, List<Winner>> winsPerProducer = winners.stream().collect(Collectors.groupingBy(w -> w.getProducer()));
+		Map<String, List<Winner>> winsPerProducer = producers.stream().collect(Collectors.toMap(p -> p, p -> nomineeRepository.listWins(p)));
 		
 		for (String producer : winsPerProducer.keySet()) {
 			

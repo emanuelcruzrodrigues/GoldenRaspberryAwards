@@ -12,6 +12,8 @@ public interface NomineeRepository {
 
 	void delete(Nominee stored);
 	
-	List<Winner> queryProducersWithMoreThanOneWin();
+	List<String> queryProducersWithMoreThanOneWin();
+
+	List<Winner> listWins(String producer);
 	
 }

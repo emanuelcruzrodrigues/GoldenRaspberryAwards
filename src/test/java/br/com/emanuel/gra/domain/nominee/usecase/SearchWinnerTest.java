@@ -34,16 +34,10 @@ class SearchWinnerTest {
 	@Test
 	void test_Get_Winning_Intervals() {
 		
-		List<Winner> winners = Arrays.asList(
-											 createWinner("p1", 2000)
-											,createWinner("p2", 2010)
-											,createWinner("p1", 2001)
-											,createWinner("p2", 2002)
-											,createWinner("p3", 2003)
-											,createWinner("p1", 1999)
-											);
-		
-		when(nomineeRepository.queryProducersWithMoreThanOneWin()).thenReturn(winners);
+		when(nomineeRepository.queryProducersWithMoreThanOneWin()).thenReturn(Arrays.asList("p1","p2","p3"));
+		when(nomineeRepository.listWins("p1")).thenReturn(Arrays.asList(createWinner("p1", 2000), createWinner("p1", 2001), createWinner("p1", 1999)));
+		when(nomineeRepository.listWins("p2")).thenReturn(Arrays.asList(createWinner("p2", 2010), createWinner("p2", 2002)));
+		when(nomineeRepository.listWins("p3")).thenReturn(Arrays.asList(createWinner("p3", 2003)));
 		
 		List<WinningInterval> winingIntervals = searchWinner.listWiningIntervals();
 		assertEquals(3, winingIntervals.size(), 0);
