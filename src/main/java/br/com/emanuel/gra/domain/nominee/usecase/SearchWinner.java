@@ -1,4 +1,4 @@
-package br.com.emanuel.gra.domain.winner.usecase;
+package br.com.emanuel.gra.domain.nominee.usecase;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,22 +9,17 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.emanuel.gra.domain.nominee.Nominee;
-import br.com.emanuel.gra.domain.winner.Winner;
-import br.com.emanuel.gra.domain.winner.WinnerRepository;
-import br.com.emanuel.gra.domain.winner.WinningInterval;
-import br.com.emanuel.gra.domain.winner.WinningIntervalGroup;
+import br.com.emanuel.gra.domain.nominee.NomineeRepository;
+import br.com.emanuel.gra.domain.nominee.Winner;
+import br.com.emanuel.gra.domain.nominee.WinningInterval;
+import br.com.emanuel.gra.domain.nominee.WinningIntervalGroup;
 
 @Component
 public class SearchWinner {
 
 	@Autowired
-	WinnerRepository winnerRepository;
+	NomineeRepository nomineeRepository;
 
-	public List<Winner> searchWinnersRelated(Nominee nominee) {
-		return winnerRepository.listWinnersRelated(nominee);
-	}
-	
 	public WinningIntervalGroup getWinningIntervalGroup() {
 		List<WinningInterval> winingIntervals = listWiningIntervals();
 		WinningIntervalGroup winningIntervalGroup = new WinningIntervalGroup(winingIntervals);
@@ -38,7 +33,7 @@ public class SearchWinner {
 		
 		List<WinningInterval> result = new ArrayList<>();
 		
-		List<Winner> winners = winnerRepository.queryProducersWithMoreThanOneWin();
+		List<Winner> winners = nomineeRepository.queryProducersWithMoreThanOneWin();
 		
 		Map<String, List<Winner>> winsPerProducer = winners.stream().collect(Collectors.groupingBy(w -> w.getProducer()));
 		

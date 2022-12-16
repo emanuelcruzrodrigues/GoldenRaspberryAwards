@@ -10,6 +10,7 @@ class NomineeTest {
 	void test_Get_Winners_With_No_Winner() {
 		Nominee nominee = new Nominee();
 		nominee.setProducers("Sean S. Cunningham");
+		nominee.refreshWinners();
 		
 		assertEquals(0, nominee.getWinners().size(), 0);
 	}
@@ -19,6 +20,7 @@ class NomineeTest {
 		Nominee nominee = new Nominee();
 		nominee.setProducers("Sean S. Cunningham");
 		nominee.setWinner(true);
+		nominee.refreshWinners();
 		
 		assertEquals(1, nominee.getWinners().size(), 0);
 		assertEquals("Sean S. Cunningham", nominee.getWinners().get(0).getProducer());
@@ -29,6 +31,7 @@ class NomineeTest {
 		Nominee nominee = new Nominee();
 		nominee.setProducers("Adam Sandler and Rob Schneider");
 		nominee.setWinner(true);
+		nominee.refreshWinners();
 		
 		assertEquals(2, nominee.getWinners().size(), 0);
 		assertEquals("Adam Sandler", nominee.getWinners().get(0).getProducer());
@@ -40,6 +43,7 @@ class NomineeTest {
 		Nominee nominee = new Nominee();
 		nominee.setProducers("Kevin Costner, Lawrence Kasdan and Jim Wilson");
 		nominee.setWinner(true);
+		nominee.refreshWinners();
 		
 		assertEquals(3, nominee.getWinners().size(), 0);
 		assertEquals("Kevin Costner", nominee.getWinners().get(0).getProducer());
@@ -52,6 +56,7 @@ class NomineeTest {
 		Nominee nominee = new Nominee();
 		nominee.setProducers("Kevin Costner, John Davis, Charles Gordon and Lawrence Gordon");
 		nominee.setWinner(true);
+		nominee.refreshWinners();
 		
 		assertEquals(4, nominee.getWinners().size(), 0);
 		assertEquals("Kevin Costner", nominee.getWinners().get(0).getProducer());

@@ -1,6 +1,5 @@
-package br.com.emanuel.gra.domain.winner;
+package br.com.emanuel.gra.domain.nominee;
 
-import br.com.emanuel.gra.domain.nominee.Nominee;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

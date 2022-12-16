@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.emanuel.gra.domain.nominee.Nominee;
-import br.com.emanuel.gra.domain.winner.usecase.UpdateWinner;
 import jakarta.transaction.Transactional;
 
 @Component
@@ -12,9 +11,6 @@ public class UpdateNominee {
 	
 	@Autowired
 	private LoadNominee loadNominee;
-	
-	@Autowired
-	private UpdateWinner updateWinner;
 	
 	@Transactional
 	public Nominee update(Nominee nominee, Long id) {
@@ -36,7 +32,7 @@ public class UpdateNominee {
 			stored.update(nominee);
 		}
 		
-		updateWinner.updateWinnersRelated(stored);
+		stored.refreshWinners();
 		
 		return stored;
 	}

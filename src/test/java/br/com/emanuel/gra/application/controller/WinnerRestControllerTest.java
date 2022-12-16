@@ -11,8 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
-import br.com.emanuel.gra.domain.winner.WinningInterval;
-import br.com.emanuel.gra.domain.winner.WinningIntervalGroup;
+import br.com.emanuel.gra.domain.nominee.WinningInterval;
+import br.com.emanuel.gra.domain.nominee.WinningIntervalGroup;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)

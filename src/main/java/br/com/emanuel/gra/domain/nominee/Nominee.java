@@ -6,11 +6,13 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.emanuel.gra.domain.winner.Winner;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,6 +38,10 @@ public class Nominee {
 	
 	@Column(name="WINNER")
 	private Boolean winner;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "nominee", targetEntity = Winner.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Winner> winners;
 
 	public Long getId() {
 		return id;
@@ -95,29 +101,42 @@ public class Nominee {
 		Optional.ofNullable(source.getYear()).ifPresent(p -> setYear(p));
 	}
 	
+	public List<Winner> getWinners() {
+		return winners;
+	}
+	public void setWinners(List<Winner> winners) {
+		this.winners = winners;
+	}
 	/**
 	 * @see NomineeTest
 	 */
-	@JsonIgnore
-	public List<Winner> getWinners() {
+	
+	public void refreshWinners() {
 		
 		List<Winner> result = new ArrayList<>();
 		
-		if (getWinner() == null || !getWinner()) return result;
-		
-		String[] p1 = getProducers().split(" and ");
-		for (String string : p1) {
-			String[] producers = string.split(",");
-			for (String producer : producers) {
-				Winner winner = new Winner();
-				winner.setProducer(producer.trim());
-				winner.setNominee(this);
-				winner.setYear(getYear());
-				result.add(winner);
+		if (getWinner() != null && getWinner()) {
+			String[] p1 = getProducers().split(" and ");
+			for (String string : p1) {
+				String[] producers = string.split(",");
+				for (String producer : producers) {
+					Winner winner = new Winner();
+					winner.setProducer(producer.trim());
+					winner.setNominee(this);
+					winner.setYear(getYear());
+					result.add(winner);
+				}
 			}
 		}
 		
-		return result;
+		if (getWinners() == null) {
+			setWinners(new ArrayList<>());
+		} else {
+			getWinners().clear();
+		}
+		
+		getWinners().addAll(result);
 	}
+	
 	
 }

@@ -1,7 +1,7 @@
-package br.com.emanuel.gra.domain.winner.usecase;
+package br.com.emanuel.gra.domain.nominee.usecase;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,16 +11,16 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import br.com.emanuel.gra.domain.winner.Winner;
-import br.com.emanuel.gra.domain.winner.WinnerRepository;
-import br.com.emanuel.gra.domain.winner.WinningInterval;
+import br.com.emanuel.gra.domain.nominee.NomineeRepository;
+import br.com.emanuel.gra.domain.nominee.Winner;
+import br.com.emanuel.gra.domain.nominee.WinningInterval;
 
 class SearchWinnerTest {
 	
 	private SearchWinner searchWinner;
 	
 	@Mock
-	private WinnerRepository winnerRepository;
+	private NomineeRepository nomineeRepository;
 	
 	@BeforeEach
 	public void setUp() {
@@ -28,7 +28,7 @@ class SearchWinnerTest {
 		searchWinner = new SearchWinner();
 		
 		MockitoAnnotations.openMocks(this);
-		searchWinner.winnerRepository = winnerRepository;
+		searchWinner.nomineeRepository = nomineeRepository;
 	}
 
 	@Test
@@ -43,7 +43,7 @@ class SearchWinnerTest {
 											,createWinner("p1", 1999)
 											);
 		
-		when(winnerRepository.queryProducersWithMoreThanOneWin()).thenReturn(winners);
+		when(nomineeRepository.queryProducersWithMoreThanOneWin()).thenReturn(winners);
 		
 		List<WinningInterval> winingIntervals = searchWinner.listWiningIntervals();
 		assertEquals(3, winingIntervals.size(), 0);

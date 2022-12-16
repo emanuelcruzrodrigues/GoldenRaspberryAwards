@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.emanuel.gra.domain.winner.WinningIntervalGroup;
-import br.com.emanuel.gra.domain.winner.usecase.SearchWinner;
+import br.com.emanuel.gra.domain.nominee.WinningIntervalGroup;
+import br.com.emanuel.gra.domain.nominee.usecase.SearchWinner;
 
 @RestController
 public class WinnerRestController {

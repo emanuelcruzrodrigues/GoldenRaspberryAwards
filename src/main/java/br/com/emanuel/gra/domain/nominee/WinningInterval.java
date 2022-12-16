@@ -1,4 +1,4 @@
-package br.com.emanuel.gra.domain.winner;
+package br.com.emanuel.gra.domain.nominee;
 
 public class WinningInterval {
 
